@@ -1,0 +1,6 @@
+use_frameworks!
+target 'FTLocalizationManager_Tests' do
+  pod 'FTLocalizationManager', :path => '../'
+  
+  
+end
