@@ -1,0 +1,6 @@
+framework module FTLocalizationManager {
+  umbrella header "FTLocalizationManager-umbrella.h"
+
+  export *
+  module * { export * }
+}

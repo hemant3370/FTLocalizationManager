@@ -1,0 +1,16 @@
+PODS:
+  - FTLocalizationManager (0.1.0)
+
+DEPENDENCIES:
+  - FTLocalizationManager (from `../`)
+
+EXTERNAL SOURCES:
+  FTLocalizationManager:
+    :path: ../
+
+SPEC CHECKSUMS:
+  FTLocalizationManager: 1c0bc73a46040b779c920d97466b1751779d9aa1
+
+PODFILE CHECKSUM: 9f43e09f18905546a7522e470ee2c93407964b6b
+
+COCOAPODS: 1.4.0

@@ -12,14 +12,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D565630FA1685A92012594E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		1D565630FA1685A92012594E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		560D1F49D763C44BEAC243C9 /* Pods-FTLocalizationManager_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FTLocalizationManager_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FTLocalizationManager_Tests/Pods-FTLocalizationManager_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		593C46CA53CF275B8BDA1F1A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		593C46CA53CF275B8BDA1F1A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* FTLocalizationManager_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FTLocalizationManager_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		6EAF64C4DC5D5FE0BF16E91C /* Pods_FTLocalizationManager_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FTLocalizationManager_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7161518D97B641B8FEA425AB /* FTLocalizationManager.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = FTLocalizationManager.podspec; path = ../FTLocalizationManager.podspec; sourceTree = "<group>"; };
+		7161518D97B641B8FEA425AB /* FTLocalizationManager.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = FTLocalizationManager.podspec; path = ../FTLocalizationManager.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BECEF9225451E2F8B71E1156 /* Pods-FTLocalizationManager_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FTLocalizationManager_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FTLocalizationManager_Tests/Pods-FTLocalizationManager_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,10 +131,6 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
-					607FACCF1AFB9204008FA782 = {
-						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0900;
-					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						LastSwiftMigration = 0900;
