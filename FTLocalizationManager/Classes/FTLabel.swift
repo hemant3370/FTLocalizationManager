@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FTLabel: UILabel {
+open class FTLabel: UILabel {
     @IBInspectable var respectLocale: Bool = true {
         didSet {
             configrueView()
@@ -21,13 +21,14 @@ class FTLabel: UILabel {
         }
     }
     
-    override func awakeFromNib() {
+   open override func awakeFromNib() {
         super.awakeFromNib()
-        
+    
+        print("testing")
         configrueView()
     }
     
-    func configrueView() {
+   private func configrueView() {
         if let localizedText = localizedText {
             text = NSLocalizedString(localizedText, comment: "")
         }

@@ -8,7 +8,8 @@
 
 import UIKit
 
-class FTImageView: UIImageView, LocalizableImage {
+
+open class FTImageView: UIImageView {
     @IBInspectable var respectLocale: Bool = true {
         didSet {
             configureView()
@@ -21,7 +22,7 @@ class FTImageView: UIImageView, LocalizableImage {
         }
     }
     
-    override func awakeFromNib() {
+   open override func awakeFromNib() {
         super.awakeFromNib()
         
         configureView()

@@ -8,20 +8,20 @@
 
 import UIKit
 
-class FTBarButtonItem: UIBarButtonItem {
+open class FTBarButtonItem: UIBarButtonItem {
     @IBInspectable var localizedText: String? {
         didSet {
             configrueView()
         }
     }
     
-    override func awakeFromNib() {
+   open override func awakeFromNib() {
         super.awakeFromNib()
         
         configrueView()
     }
     
-    func configrueView() {
+   private func configrueView() {
         if let localizedText = localizedText {
             title = NSLocalizedString(localizedText, comment: "")
         }

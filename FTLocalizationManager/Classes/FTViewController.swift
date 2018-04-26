@@ -8,20 +8,20 @@
 
 import UIKit
 
-class FTViewController: UIViewController {
-    @IBInspectable var localizedText: String? {
+open class FTViewController: UIViewController {
+    @IBInspectable public var localizedText: String? {
         didSet {
             configrueView()
         }
     }
     
-    override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         
         configrueView()
     }
     
-    func configrueView() {
+    private func configrueView() {
         if let localizedText = localizedText {
             title = NSLocalizedString(localizedText, comment: "")
         }

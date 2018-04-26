@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum Language: String {
+public enum Language: String {
     case english = "en"
     case arabic = "ar"
     case french = "fr"
@@ -38,14 +38,14 @@ enum Language: String {
     }
 }
 
-extension Language {
+public extension Language {
     fileprivate struct Keys {
         static let preferred = "UserPreferedAppLanguage"
         static let device = "AppleLanguages"
     }
 }
 
-extension Language {
+public extension Language {
     /// current language if user has preferred one or the device language
     static var current: Language {
         get {
@@ -76,11 +76,15 @@ extension Language {
     }
 }
 
-extension Language {
+public extension Language {
     fileprivate func updateView() {
         
         // update semanticContentAttribute
-        UIView.appearance().semanticContentAttribute = isRTL ? .forceRightToLeft : .forceLeftToRight
+        if #available(iOS 9.0, *) {
+            UIView.appearance().semanticContentAttribute = isRTL ? .forceRightToLeft : .forceLeftToRight
+        } else {
+            // Fallback on earlier versions
+        }
 
         restart()
     }

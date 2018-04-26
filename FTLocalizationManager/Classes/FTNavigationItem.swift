@@ -8,21 +8,21 @@
 
 import UIKit
 
-class FTNavigationItem: UINavigationItem {
+open class FTNavigationItem: UINavigationItem {
 
-    @IBInspectable var localizedText: String? {
+    @IBInspectable open var localizedText: String? {
         didSet {
             configrueView()
         }
     }
     
-    override func awakeFromNib() {
+  open override func awakeFromNib() {
         super.awakeFromNib()
         
         configrueView()
     }
     
-    func configrueView() {
+   private func configrueView() {
         if let localizedText = localizedText {
             title = NSLocalizedString(localizedText, comment: "")
         }

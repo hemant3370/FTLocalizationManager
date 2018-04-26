@@ -8,32 +8,32 @@
 
 import UIKit
 
-class FTTextView: UITextView {
-    @IBInspectable var respectLocale: Bool = true {
+open class FTTextView: UITextView {
+    @IBInspectable open var respectLocale: Bool = true {
         didSet {
             configrueView()
         }
     }
     
-    @IBInspectable var localizedText: String? {
+    @IBInspectable open var localizedText: String? {
         didSet {
             configrueView()
         }
     }
     
-    @IBInspectable var localizedPlaceholder: String? {
+    @IBInspectable open var localizedPlaceholder: String? {
         didSet {
             configrueView()
         }
     }
     
-    override func awakeFromNib() {
+   open override func awakeFromNib() {
         super.awakeFromNib()
         
         configrueView()
     }
     
-    func configrueView() {
+    private func configrueView() {
         if let localizedText = localizedText {
             text = NSLocalizedString(localizedText, comment: "")
         }

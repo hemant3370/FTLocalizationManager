@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension UIApplication {
+public extension UIApplication {
     class func handleLocalization() {
         MethodSwizzleGivenClassName(cls: Bundle.self, originalSelector: #selector(Bundle.localizedString(forKey:value:table:)), overrideSelector: #selector(Bundle.specialLocalizedStringForKey(_:value:table:)))
         MethodSwizzleGivenClassName(cls: UIApplication.self, originalSelector: #selector(getter: UIApplication.userInterfaceLayoutDirection), overrideSelector: #selector(getter: UIApplication.cstm_userInterfaceLayoutDirection))
@@ -19,7 +19,11 @@ extension UIApplication {
         get {
             var direction = UIUserInterfaceLayoutDirection.leftToRight
             if Language.current == Language.arabic {
-                UIView.appearance().semanticContentAttribute = .forceRightToLeft
+                if #available(iOS 9.0, *) {
+                    UIView.appearance().semanticContentAttribute = .forceRightToLeft
+                } else {
+                    // Fallback on earlier versions
+                }
                 direction = .leftToRight
             }
             return direction
@@ -27,7 +31,7 @@ extension UIApplication {
     }
 }
 
-extension Bundle {
+public extension Bundle {
     @objc func specialLocalizedStringForKey(_ key: String, value: String?, table tableName: String?) -> String {
         if self == Bundle.main {
             let currentLanguage = Language.current.locale
@@ -48,7 +52,7 @@ extension Bundle {
     }
 }
 
-func MethodSwizzleGivenClassName(cls: AnyClass, originalSelector: Selector, overrideSelector: Selector) {
+public func MethodSwizzleGivenClassName(cls: AnyClass, originalSelector: Selector, overrideSelector: Selector) {
     guard let origMethod: Method = class_getInstanceMethod(cls, originalSelector), let overrideMethod: Method = class_getInstanceMethod(cls, overrideSelector)  else {
         return
     }

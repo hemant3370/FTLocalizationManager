@@ -8,52 +8,52 @@
 
 import UIKit
 
-class FTButton: UIButton {
-    @IBInspectable var respectLocale: Bool = true {
+open class FTButton: UIButton {
+    @IBInspectable open var respectLocale: Bool = true {
         didSet {
-            configureView()
+            configrueView()
         }
     }
     
-    @IBInspectable var imageName: String? {
+    @IBInspectable open var imageName: String? {
         didSet {
-            configureView()
+            configrueView()
         }
     }
     
-    @IBInspectable var localizedTitleNormal: String? {
+    @IBInspectable open var localizedTitleNormal: String? {
         didSet {
-            configureView()
+            configrueView()
         }
     }
-    @IBInspectable var localizedTitleSelected: String? {
+    @IBInspectable open var localizedTitleSelected: String? {
         didSet {
-            configureView()
+            configrueView()
         }
     }
-    @IBInspectable var localizedTitleHighlighted: String? {
+    @IBInspectable open var localizedTitleHighlighted: String? {
         didSet {
-            configureView()
-        }
-    }
-    
-    @IBInspectable var localizedTitleDisabled: String? {
-        didSet {
-            configureView()
+            configrueView()
         }
     }
     
-    override func awakeFromNib() {
+    @IBInspectable open var localizedTitleDisabled: String? {
+        didSet {
+            configrueView()
+        }
+    }
+    
+   open override func awakeFromNib() {
         super.awakeFromNib()
         
-        configureView()
+        configrueView()
     }
     
     fileprivate var shouldFlip: Bool {
         return respectLocale && Language.current.isRTL
     }
     
-    func configureView() {
+   private func configrueView() {
         
         if let localizedTitleNormal = localizedTitleNormal {
             setTitle(NSLocalizedString(localizedTitleNormal, comment: ""), for: .normal)
