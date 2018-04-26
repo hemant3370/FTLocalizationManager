@@ -8,16 +8,16 @@
 
 Pod::Spec.new do |s|
   s.name             = 'FTLocalizationManager'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of FTLocalizationManager.'
+  s.version          = '0.1.1'
+  s.summary          = 'Localization Manager'
 
 
-  s.homepage         = 'https://github.com/farabis4m/FTLocalizationManager.git'
+  s.homepage         = 'https://github.com/farabis4m/FTLocalizationManager'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Abdulla' => 'abdulla@farabi.ae' }
   s.source           = { :git => 'https://github.com/farabis4m/FTLocalizationManager.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'FTLocalizationManager/Classes/**/*'
 end

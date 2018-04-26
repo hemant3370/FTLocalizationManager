@@ -8,19 +8,6 @@
 
 import UIKit
 
-protocol LocalizableImage {
-    var respectLocale: Bool { get set }
-    var imageName: String? { get set }
-    var shouldFlip: Bool { get }
-    func configureView()
-}
-
-extension LocalizableImage {
-    var shouldFlip: Bool {
-        return respectLocale && Language.current.isRTL
-    }
-}
-
 class FTImageView: UIImageView, LocalizableImage {
     @IBInspectable var respectLocale: Bool = true {
         didSet {
@@ -38,6 +25,10 @@ class FTImageView: UIImageView, LocalizableImage {
         super.awakeFromNib()
         
         configureView()
+    }
+    
+    fileprivate var shouldFlip: Bool {
+        return respectLocale && Language.current.isRTL
     }
     
     func configureView() {
