@@ -9,19 +9,19 @@
 import UIKit
 
 open class FTTextField: UITextField {
-    @IBInspectable open var respectLocale: Bool = true {
+    @IBInspectable var respectLocale: Bool = true {
         didSet {
           configrueView()
         }
     }
     
-    @IBInspectable open var localizedText: String? {
+    @IBInspectable var localizedText: String? {
         didSet {
             configrueView()
         }
     }
     
-    @IBInspectable open var localizedPlaceholder: String? {
+    @IBInspectable var localizedPlaceholder: String? {
         didSet {
             configrueView()
         }

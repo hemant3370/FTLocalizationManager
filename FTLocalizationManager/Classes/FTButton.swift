@@ -9,35 +9,35 @@
 import UIKit
 
 open class FTButton: UIButton {
-    @IBInspectable open var respectLocale: Bool = true {
+    @IBInspectable var respectLocale: Bool = true {
         didSet {
             configrueView()
         }
     }
     
-    @IBInspectable open var imageName: String? {
+    @IBInspectable var imageName: String? {
         didSet {
             configrueView()
         }
     }
     
-    @IBInspectable open var localizedTitleNormal: String? {
+    @IBInspectable var localizedTitleNormal: String? {
         didSet {
             configrueView()
         }
     }
-    @IBInspectable open var localizedTitleSelected: String? {
+    @IBInspectable var localizedTitleSelected: String? {
         didSet {
             configrueView()
         }
     }
-    @IBInspectable open var localizedTitleHighlighted: String? {
+    @IBInspectable var localizedTitleHighlighted: String? {
         didSet {
             configrueView()
         }
     }
     
-    @IBInspectable open var localizedTitleDisabled: String? {
+    @IBInspectable var localizedTitleDisabled: String? {
         didSet {
             configrueView()
         }

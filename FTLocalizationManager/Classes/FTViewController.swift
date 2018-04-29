@@ -9,7 +9,7 @@
 import UIKit
 
 open class FTViewController: UIViewController {
-    @IBInspectable public var localizedText: String? {
+    @IBInspectable var localizedText: String? {
         didSet {
             configrueView()
         }
