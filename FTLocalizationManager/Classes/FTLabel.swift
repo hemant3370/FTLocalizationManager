@@ -34,11 +34,11 @@ open class FTLabel: UILabel {
     
         // flip
         if Language.current.isRTL && respectLocale  {
-            if self.textAlignment == .right {
-                self.textAlignment = .left
+            if textAlignment == .right {
+                textAlignment = .left
             }
-            else if self.textAlignment == .left {
-                self.textAlignment = .right
+            else if textAlignment == .left {
+                textAlignment = .right
             }
         }
     }
