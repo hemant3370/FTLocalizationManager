@@ -99,7 +99,7 @@ public extension Language {
         UIView.transition(with: window, duration: 0.6, options: .transitionCrossDissolve, animations: nil, completion: nil)
     }
     
-    private func apply() {
+    static func apply() {
         UIApplication.handleLocalization()
     }
 }
