@@ -38,11 +38,13 @@ open class FTTextView: UITextView {
             text = NSLocalizedString(localizedText, comment: "")
         }
         
+        
+        // flip
         if Language.current.isRTL && respectLocale  {
             if self.textAlignment == .right {
                 self.textAlignment = .left
             }
-            if self.textAlignment == .left {
+            else if self.textAlignment == .left {
                 self.textAlignment = .right
             }
         }

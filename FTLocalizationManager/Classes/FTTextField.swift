@@ -42,11 +42,12 @@ open class FTTextField: UITextField {
             placeholder = NSLocalizedString(localizedPlaceholder, comment: "")
         }
         
+        // flip
         if Language.current.isRTL && respectLocale  {
             if self.textAlignment == .right {
                 self.textAlignment = .left
             }
-            if self.textAlignment == .left {
+            else if self.textAlignment == .left {
                 self.textAlignment = .right
             }
         }

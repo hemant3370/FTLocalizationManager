@@ -24,7 +24,6 @@ open class FTLabel: UILabel {
    open override func awakeFromNib() {
         super.awakeFromNib()
     
-        print("testing")
         configrueView()
     }
     
@@ -32,11 +31,13 @@ open class FTLabel: UILabel {
         if let localizedText = localizedText {
             text = NSLocalizedString(localizedText, comment: "")
         }
+    
+        // flip
         if Language.current.isRTL && respectLocale  {
             if self.textAlignment == .right {
                 self.textAlignment = .left
             }
-            if self.textAlignment == .left {
+            else if self.textAlignment == .left {
                 self.textAlignment = .right
             }
         }

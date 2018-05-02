@@ -9,6 +9,17 @@
 import UIKit
 
 open class FTBarButtonItem: UIBarButtonItem {
+    @IBInspectable var respectLocale: Bool = true {
+        didSet {
+            configrueView()
+        }
+    }
+    
+    @IBInspectable var imageName: String? {
+        didSet {
+            configrueView()
+        }
+    }
     @IBInspectable var localizedText: String? {
         didSet {
             configrueView()
@@ -20,6 +31,7 @@ open class FTBarButtonItem: UIBarButtonItem {
         
         configrueView()
     }
+    
     
    private func configrueView() {
         if let localizedText = localizedText {
