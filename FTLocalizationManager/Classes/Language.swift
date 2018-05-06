@@ -25,7 +25,7 @@ public enum Language: String {
         }
     }
     
-    var isRTL: Bool {
+   public var isRTL: Bool {
         return self == .arabic
     }
     
