@@ -10,7 +10,7 @@ import UIKit
 
 open class FTNavigationItem: UINavigationItem {
 
-    @IBInspectable var localizedText: String? {
+    @IBInspectable open var localizedText: String? {
         didSet {
             configrueView()
         }

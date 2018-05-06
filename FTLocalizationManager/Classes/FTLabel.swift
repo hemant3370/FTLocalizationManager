@@ -9,13 +9,13 @@
 import UIKit
 
 open class FTLabel: UILabel {
-    @IBInspectable var respectLocale: Bool = true {
+    @IBInspectable open var respectLocale: Bool = true {
         didSet {
             configrueView()
         }
     }
     
-    @IBInspectable var localizedText: String? {
+    @IBInspectable open var localizedText: String? {
         didSet {
             configrueView()
         }

@@ -13,11 +13,11 @@ public enum Language: String {
     case arabic = "ar"
     case french = "fr"
     
-    var locale: String {
+   public var locale: String {
         return rawValue
     }
     
-    var title: String {
+   public var title: String {
         switch self {
         case .english: return "English"
         case .arabic: return "Arabic"

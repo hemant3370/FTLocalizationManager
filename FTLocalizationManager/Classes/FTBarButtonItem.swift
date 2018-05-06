@@ -9,18 +9,18 @@
 import UIKit
 
 open class FTBarButtonItem: UIBarButtonItem {
-    @IBInspectable var respectLocale: Bool = true {
+    @IBInspectable open var respectLocale: Bool = true {
         didSet {
             configrueView()
         }
     }
     
-    @IBInspectable var imageName: String? {
+    @IBInspectable open var imageName: String? {
         didSet {
             configrueView()
         }
     }
-    @IBInspectable var localizedText: String? {
+    @IBInspectable open var localizedText: String? {
         didSet {
             configrueView()
         }

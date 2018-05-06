@@ -10,19 +10,19 @@ import UIKit
 
 
 open class FTImageView: UIImageView {
-    @IBInspectable var respectLocale: Bool = true {
+    @IBInspectable open var respectLocale: Bool = true {
         didSet {
             configureView()
         }
     }
     
-    @IBInspectable var imageName: String? {
+    @IBInspectable open var imageName: String? {
         didSet {
             configureView()
         }
     }
     
-   open override func awakeFromNib() {
+   open override open func awakeFromNib() {
         super.awakeFromNib()
         
         configureView()
@@ -32,7 +32,7 @@ open class FTImageView: UIImageView {
         return respectLocale && Language.current.isRTL
     }
     
-    func configureView() {
+   private func configureView() {
         
         // abort if we dont have an image
         guard let imageName = imageName, let newImage = UIImage(named: imageName), let cgImage = newImage.cgImage else { return }
