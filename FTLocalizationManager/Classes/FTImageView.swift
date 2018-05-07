@@ -22,7 +22,7 @@ open class FTImageView: UIImageView {
         }
     }
     
-   open override open func awakeFromNib() {
+   open override func awakeFromNib() {
         super.awakeFromNib()
         
         configureView()
