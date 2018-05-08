@@ -25,6 +25,14 @@ public enum Language: String {
         }
     }
     
+    public var localizedTitle: String {
+        switch self {
+        case .english: return "English"
+        case .arabic: return "العربية"
+        case .french: return "Français"
+        }
+    }
+    
    public var isRTL: Bool {
         return self == .arabic
     }
@@ -34,7 +42,7 @@ public enum Language: String {
     }
     
     static var all: [Language] {
-        return [.english, .arabic, .french]
+        return [.arabic, english, .french]
     }
 }
 
