@@ -37,11 +37,11 @@ public enum Language: String {
         return self == .arabic
     }
     
-    static func language(from code: String) -> Language {
+    public static func language(from code: String) -> Language {
         return Language(rawValue: code) ?? .english
     }
     
-    static var all: [Language] {
+    public static var all: [Language] {
         return [.arabic, english, .french]
     }
 }
