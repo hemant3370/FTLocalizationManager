@@ -88,12 +88,8 @@ public extension Language {
     fileprivate func updateView() {
         
         // update semanticContentAttribute
-        if #available(iOS 9.0, *) {
-            UIView.appearance().semanticContentAttribute = isRTL ? .forceRightToLeft : .forceLeftToRight
-        } else {
-            // Fallback on earlier versions
-        }
-
+        UIView.appearance().semanticContentAttribute = isRTL ? .forceRightToLeft : .forceLeftToRight
+       
         restart()
     }
     

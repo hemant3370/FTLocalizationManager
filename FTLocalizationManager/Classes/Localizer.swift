@@ -11,41 +11,31 @@ import UIKit
 
 public extension UIApplication {
     class func handleLocalization() {
-        MethodSwizzleGivenClassName(cls: Bundle.self, originalSelector: #selector(Bundle.localizedString(forKey:value:table:)), overrideSelector: #selector(Bundle.specialLocalizedStringForKey(_:value:table:)))
-        MethodSwizzleGivenClassName(cls: UIApplication.self, originalSelector: #selector(getter: UIApplication.userInterfaceLayoutDirection), overrideSelector: #selector(getter: UIApplication.cstm_userInterfaceLayoutDirection))
-    }
-    
-    @objc var cstm_userInterfaceLayoutDirection : UIUserInterfaceLayoutDirection {
-        get {
-            var direction = UIUserInterfaceLayoutDirection.leftToRight
-            if Language.current == Language.arabic {
-                if #available(iOS 9.0, *) {
-                    UIView.appearance().semanticContentAttribute = .forceRightToLeft
-                } else {
-                    // Fallback on earlier versions
-                }
-                direction = .leftToRight
-            }
-            return direction
+        if Language.current == .arabic {
+            UIView.appearance().semanticContentAttribute = .forceRightToLeft
         }
+        
+        MethodSwizzleGivenClassName(cls: Bundle.self, originalSelector: #selector(Bundle.localizedString(forKey:value:table:)), overrideSelector: #selector(Bundle.specialLocalizedStringForKey(_:value:table:)))
     }
 }
 
 public extension Bundle {
     @objc func specialLocalizedStringForKey(_ key: String, value: String?, table tableName: String?) -> String {
         if self == Bundle.main {
-            let currentLanguage = Language.current.locale
-            var bundle = Bundle();
-            if let _path = Bundle.main.path(forResource: currentLanguage, ofType: "lproj") {
-                bundle = Bundle(path: _path)!
-            }else
-                if let _path = Bundle.main.path(forResource: currentLanguage, ofType: "lproj") {
-                    bundle = Bundle(path: _path)!
-                } else {
-                    let _path = Bundle.main.path(forResource: "Base", ofType: "lproj")!
-                    bundle = Bundle(path: _path)!
+            var bundle: Bundle?
+            if let _path = Bundle.main.path(forResource: Language.current.locale, ofType: "lproj") {
+                bundle = Bundle(path: _path)
+            } else {
+                let _path = Bundle.main.path(forResource: "Base", ofType: "lproj")!
+                bundle = Bundle(path: _path)
             }
-            return (bundle.specialLocalizedStringForKey(key, value: value, table: tableName))
+            
+            guard let newBundle = bundle  else {
+                return (self.specialLocalizedStringForKey(key, value: value, table: tableName))
+            }
+            
+            return (newBundle.specialLocalizedStringForKey(key, value: value, table: tableName))
+            
         } else {
             return (self.specialLocalizedStringForKey(key, value: value, table: tableName))
         }
