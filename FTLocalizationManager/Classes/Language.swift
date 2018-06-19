@@ -80,7 +80,8 @@ public extension Language {
     static var device: Language {
         guard let deviceLanguages = UserDefaults.standard.object(forKey: Keys.device) as? [String],
             let deviceLanguage = deviceLanguages.first else { return .english }
-       return Language(rawValue: deviceLanguage) ?? .english
+        let array = deviceLanguage.components(separatedBy: "-")
+        return Language(rawValue: array.first ?? "en") ?? .english
     }
 }
 
