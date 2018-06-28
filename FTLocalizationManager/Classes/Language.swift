@@ -54,26 +54,29 @@ public extension Language {
 }
 
 public extension Language {
+    
     /// current language if user has preferred one or the device language
     static var current: Language {
-        get {
-            guard let preferred = UserDefaults.standard.string(forKey: Keys.preferred) else {
-                
-                // save device language as preferred
-                Language.current = Language.device
-                
-                return Language.device
-            }
+        guard let preferred = UserDefaults.standard.string(forKey: Keys.preferred) else {
             
-            return Language(rawValue: preferred) ?? .english
-        }
-        set {
-            UserDefaults.standard.set(newValue.locale, forKey: Keys.preferred)
-            UserDefaults.standard.synchronize()
+            // save device language as preferred
+            Language.setCurrentLanguage(language: .device)
             
-            // update app for new language
-            newValue.updateView()
+            return Language.device
         }
+        
+        return Language(rawValue: preferred) ?? .english
+    }
+    
+    /// set the current language and restart with the rootviewcontroller
+    static func setCurrentLanguage(language: Language, restarting rootViewController: UIViewController? = nil) {
+        
+        // save the preffered language
+        UserDefaults.standard.set(language.locale, forKey: Keys.preferred)
+        UserDefaults.standard.synchronize()
+        
+        // update app for new language
+        language.updateView(restarting: rootViewController)
     }
     
     /// returns the device language. returns arabic if device language is arabic, else returns english
@@ -86,20 +89,20 @@ public extension Language {
 }
 
 public extension Language {
-    fileprivate func updateView() {
+    fileprivate func updateView(restarting rootViewController: UIViewController? = nil) {
         
         // update semanticContentAttribute
         UIView.appearance().semanticContentAttribute = isRTL ? .forceRightToLeft : .forceLeftToRight
        
-        restart()
+        restart(rootViewController: rootViewController)
     }
     
-    private func restart() {
+    private func restart(rootViewController: UIViewController? = nil) {
         guard let wrappedWindow = UIApplication.shared.delegate?.window else { return }
         guard let window = wrappedWindow else { return }
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        window.rootViewController = storyboard.instantiateInitialViewController()
+        // load root view controller if we have one, or load initial view controller of main storyboard
+        window.rootViewController = rootViewController ?? UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
         
         UIView.transition(with: window, duration: 0.6, options: .transitionCrossDissolve, animations: nil, completion: nil)
     }
