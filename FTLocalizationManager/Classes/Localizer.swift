@@ -11,10 +11,6 @@ import UIKit
 
 public extension UIApplication {
     class func handleLocalization() {
-        if Language.current == .arabic {
-            UIView.appearance().semanticContentAttribute = .forceRightToLeft
-        }
-        
         MethodSwizzleGivenClassName(cls: Bundle.self, originalSelector: #selector(Bundle.localizedString(forKey:value:table:)), overrideSelector: #selector(Bundle.specialLocalizedStringForKey(_:value:table:)))
     }
 }

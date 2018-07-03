@@ -33,6 +33,10 @@ public enum Language: String {
         }
     }
     
+    public var semanticContentAttribute: UISemanticContentAttribute {
+        return isRTL ? .forceRightToLeft : .forceLeftToRight
+    }
+    
    public var isRTL: Bool {
         return self == .arabic
     }
@@ -92,7 +96,8 @@ public extension Language {
     fileprivate func updateView(restarting rootViewController: UIViewController? = nil) {
         
         // update semanticContentAttribute
-        UIView.appearance().semanticContentAttribute = isRTL ? .forceRightToLeft : .forceLeftToRight
+        UIView.appearance().semanticContentAttribute = semanticContentAttribute
+        UISearchBar.appearance().semanticContentAttribute = semanticContentAttribute
        
         restart(rootViewController: rootViewController)
     }
@@ -101,13 +106,14 @@ public extension Language {
         guard let wrappedWindow = UIApplication.shared.delegate?.window else { return }
         guard let window = wrappedWindow else { return }
         
-        // load root view controller if we have one, or load initial view controller of main storyboard
-        window.rootViewController = rootViewController ?? UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
+        // load root view controller if we have one, or load the current controller again
+        window.rootViewController = rootViewController ?? window.rootViewController
         
         UIView.transition(with: window, duration: 0.6, options: .transitionCrossDissolve, animations: nil, completion: nil)
     }
     
     static func apply() {
+        Language.current = Language.current
         UIApplication.handleLocalization()
     }
 }
