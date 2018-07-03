@@ -13,11 +13,11 @@ public enum Language: String {
     case arabic = "ar"
     case french = "fr"
     
-   public var locale: String {
+    public var locale: String {
         return rawValue
     }
     
-   public var title: String {
+    public var title: String {
         switch self {
         case .english: return "English"
         case .arabic: return "Arabic"
@@ -37,7 +37,11 @@ public enum Language: String {
         return isRTL ? .forceRightToLeft : .forceLeftToRight
     }
     
-   public var isRTL: Bool {
+    public var mainStoryBoardName: String {
+        return Bundle.main.object(forInfoDictionaryKey: "UIMainStoryboardFile") as? String ?? "Main"
+    }
+    
+    public var isRTL: Bool {
         return self == .arabic
     }
     
@@ -61,15 +65,21 @@ public extension Language {
     
     /// current language if user has preferred one or the device language
     static var current: Language {
-        guard let preferred = UserDefaults.standard.string(forKey: Keys.preferred) else {
+        get {
+            guard let preferred = UserDefaults.standard.string(forKey: Keys.preferred) else {
+                
+                // save device language as preferred
+                Language.setCurrentLanguage(language: .device)
+                
+                return Language.device
+            }
             
-            // save device language as preferred
-            Language.setCurrentLanguage(language: .device)
-            
-            return Language.device
+            return Language(rawValue: preferred) ?? .english
+        }
+        set {
+            setCurrentLanguage(language: newValue)
         }
         
-        return Language(rawValue: preferred) ?? .english
     }
     
     /// set the current language and restart with the rootviewcontroller
@@ -98,16 +108,15 @@ public extension Language {
         // update semanticContentAttribute
         UIView.appearance().semanticContentAttribute = semanticContentAttribute
         UISearchBar.appearance().semanticContentAttribute = semanticContentAttribute
-       
+        
         restart(rootViewController: rootViewController)
     }
     
     private func restart(rootViewController: UIViewController? = nil) {
-        guard let wrappedWindow = UIApplication.shared.delegate?.window else { return }
-        guard let window = wrappedWindow else { return }
+        guard let wrappedWindow = UIApplication.shared.delegate?.window, let window = wrappedWindow else { return }
         
-        // load root view controller if we have one, or load the current controller again
-        window.rootViewController = rootViewController ?? window.rootViewController
+        // load root view controller if we have one, or load initial view controller of main storyboard
+        window.rootViewController = rootViewController ?? UIStoryboard(name: mainStoryBoardName, bundle: nil).instantiateInitialViewController()
         
         UIView.transition(with: window, duration: 0.6, options: .transitionCrossDissolve, animations: nil, completion: nil)
     }
