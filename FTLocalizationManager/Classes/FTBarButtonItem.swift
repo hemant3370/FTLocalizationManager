@@ -20,22 +20,34 @@ open class FTBarButtonItem: UIBarButtonItem {
             configrueView()
         }
     }
+    
     @IBInspectable open var localizedText: String? {
         didSet {
             configrueView()
         }
     }
     
-   open override func awakeFromNib() {
+    fileprivate var shouldFlip: Bool {
+        return respectLocale && Language.current.isRTL
+    }
+    
+    open override func awakeFromNib() {
         super.awakeFromNib()
         
         configrueView()
     }
     
     
-   private func configrueView() {
+    private func configrueView() {
         if let localizedText = localizedText {
             title = NSLocalizedString(localizedText, comment: "")
         }
+        
+        // abort if we dont have an image
+        guard let imageName = imageName, let newImage = UIImage(named: imageName), let cgImage = newImage.cgImage else { return }
+        let image = shouldFlip ? UIImage(cgImage: cgImage, scale: newImage.scale, orientation: .upMirrored) : newImage
+        
+        // set image
+        self.image = image
     }
 }
