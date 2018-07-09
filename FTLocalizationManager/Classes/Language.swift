@@ -83,14 +83,14 @@ public extension Language {
     }
     
     /// set the current language and restart with the rootviewcontroller
-    static func setCurrentLanguage(language: Language, restarting rootViewController: UIViewController? = nil) {
+    static func setCurrentLanguage(language: Language, restarting rootViewControllerGenerator: (() -> UIViewController?)? = nil) {
         
         // save the preffered language
         UserDefaults.standard.set(language.locale, forKey: Keys.preferred)
         UserDefaults.standard.synchronize()
         
         // update app for new language
-        language.updateView(restarting: rootViewController)
+        language.updateView(restarting: rootViewControllerGenerator)
     }
     
     /// returns the device language. returns arabic if device language is arabic, else returns english
@@ -103,19 +103,20 @@ public extension Language {
 }
 
 public extension Language {
-    fileprivate func updateView(restarting rootViewController: UIViewController? = nil) {
+    fileprivate func updateView(restarting rootViewControllerGenerator: (() -> UIViewController?)? = nil) {
         
         // update semanticContentAttribute
         UIView.appearance().semanticContentAttribute = semanticContentAttribute
         UISearchBar.appearance().semanticContentAttribute = semanticContentAttribute
         
-        restart(rootViewController: rootViewController)
+        restart(rootViewControllerGenerator: rootViewControllerGenerator)
     }
     
-    private func restart(rootViewController: UIViewController? = nil) {
+    private func restart(rootViewControllerGenerator: (() -> UIViewController?)? = nil) {
         guard let wrappedWindow = UIApplication.shared.delegate?.window, let window = wrappedWindow else { return }
         
-        // load root view controller if we have one, or load initial view controller of main storyboard
+        // load root view controller from the generator if we have one, or load initial view controller of main storyboard
+        let rootViewController = rootViewControllerGenerator?()
         window.rootViewController = rootViewController ?? UIStoryboard(name: mainStoryBoardName, bundle: nil).instantiateInitialViewController()
         
         UIView.transition(with: window, duration: 0.6, options: .transitionCrossDissolve, animations: nil, completion: nil)
