@@ -21,17 +21,11 @@ open class FTLabel: UILabel {
         }
     }
     
-   open override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
-    
+        
         configrueView()
-    }
-    
-   private func configrueView() {
-        if let localizedText = localizedText {
-            text = NSLocalizedString(localizedText, comment: "")
-        }
-    
+        
         // flip
         if Language.current.isRTL && respectLocale  {
             if textAlignment == .right {
@@ -40,6 +34,12 @@ open class FTLabel: UILabel {
             else if textAlignment == .left {
                 textAlignment = .right
             }
+        }
+    }
+    
+   private func configrueView() {
+        if let localizedText = localizedText {
+            text = NSLocalizedString(localizedText, comment: "")
         }
     }
 }

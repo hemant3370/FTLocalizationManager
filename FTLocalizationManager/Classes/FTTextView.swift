@@ -27,17 +27,10 @@ open class FTTextView: UITextView {
         }
     }
     
-   open override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         
         configrueView()
-    }
-    
-    private func configrueView() {
-        if let localizedText = localizedText {
-            text = NSLocalizedString(localizedText, comment: "")
-        }
-        
         
         // flip
         if Language.current.isRTL && respectLocale  {
@@ -47,6 +40,12 @@ open class FTTextView: UITextView {
             else if textAlignment == .left {
                 textAlignment = .right
             }
+        }
+    }
+    
+    private func configrueView() {
+        if let localizedText = localizedText {
+            text = NSLocalizedString(localizedText, comment: "")
         }
     }
 }

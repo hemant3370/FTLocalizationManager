@@ -27,20 +27,10 @@ open class FTTextField: UITextField {
         }
     }
     
-   open override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         
         configrueView()
-    }
-    
-    private func configrueView() {
-        if let localizedText = localizedText {
-            text = NSLocalizedString(localizedText, comment: "")
-        }
-        
-        if let localizedPlaceholder = localizedPlaceholder {
-            placeholder = NSLocalizedString(localizedPlaceholder, comment: "")
-        }
         
         // flip
         if Language.current.isRTL && respectLocale  {
@@ -50,6 +40,16 @@ open class FTTextField: UITextField {
             else if textAlignment == .left {
                 textAlignment = .right
             }
+        }
+    }
+    
+    private func configrueView() {
+        if let localizedText = localizedText {
+            text = NSLocalizedString(localizedText, comment: "")
+        }
+        
+        if let localizedPlaceholder = localizedPlaceholder {
+            placeholder = NSLocalizedString(localizedPlaceholder, comment: "")
         }
     }
 }
