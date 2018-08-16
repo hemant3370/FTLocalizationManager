@@ -9,13 +9,20 @@
 import UIKit
 
 open class FTButton: UIButton {
+    
     @IBInspectable open var respectLocale: Bool = true {
         didSet {
             configrueView()
         }
     }
     
-    @IBInspectable open var imageName: String? {
+    @IBInspectable open var normalImage: UIImage? {
+        didSet {
+            configrueView()
+        }
+    }
+    
+    @IBInspectable open var selectedImage: UIImage? {
         didSet {
             configrueView()
         }
@@ -26,6 +33,7 @@ open class FTButton: UIButton {
             configrueView()
         }
     }
+    
     @IBInspectable open var localizedTitleSelected: String? {
         didSet {
             configrueView()
@@ -43,7 +51,7 @@ open class FTButton: UIButton {
         }
     }
     
-   open override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         
         configrueView()
@@ -53,7 +61,7 @@ open class FTButton: UIButton {
         return respectLocale && Language.current.isRTL
     }
     
-   private func configrueView() {
+    private func configrueView() {
         
         if let localizedTitleNormal = localizedTitleNormal {
             setTitle(NSLocalizedString(localizedTitleNormal, comment: ""), for: .normal)
@@ -68,11 +76,20 @@ open class FTButton: UIButton {
             setTitle(NSLocalizedString(localizedTitleDisabled, comment: ""), for: .disabled)
         }
         
-        // abort if we dont have an image
-        guard let imageName = imageName, let newImage = UIImage(named: imageName), let cgImage = newImage.cgImage else { return }
+        setImage(normalImage, for: .normal)
+        setImage(selectedImage, for: .selected)
+    }
+    
+    open override func setImage(_ image: UIImage?, for state: UIControlState) {
+        
+        guard let newImage = image, let cgImage = image?.cgImage else {
+            super.setImage(image, for: state)
+            return
+        }
+        
         let image = shouldFlip ? UIImage(cgImage: cgImage, scale: newImage.scale, orientation: .upMirrored) : newImage
         
         // set image
-        setImage(image, for: .normal)
+        super.setImage(image, for: state)
     }
 }
