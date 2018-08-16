@@ -9,6 +9,7 @@
 import UIKit
 
 open class FTTextField: UITextField {
+    
     @IBInspectable open var respectLocale: Bool = true {
         didSet {
           configrueView()

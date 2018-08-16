@@ -10,12 +10,14 @@ import Foundation
 import UIKit
 
 public extension UIApplication {
+    
     class func handleLocalization() {
         MethodSwizzleGivenClassName(cls: Bundle.self, originalSelector: #selector(Bundle.localizedString(forKey:value:table:)), overrideSelector: #selector(Bundle.specialLocalizedStringForKey(_:value:table:)))
     }
 }
 
 public extension Bundle {
+    
     @objc func specialLocalizedStringForKey(_ key: String, value: String?, table tableName: String?) -> String {
         if self == Bundle.main {
             var bundle: Bundle?
@@ -39,6 +41,7 @@ public extension Bundle {
 }
 
 public func MethodSwizzleGivenClassName(cls: AnyClass, originalSelector: Selector, overrideSelector: Selector) {
+    
     guard let origMethod: Method = class_getInstanceMethod(cls, originalSelector), let overrideMethod: Method = class_getInstanceMethod(cls, overrideSelector)  else {
         return
     }

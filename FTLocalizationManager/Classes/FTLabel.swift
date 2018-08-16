@@ -9,6 +9,7 @@
 import UIKit
 
 open class FTLabel: UILabel {
+    
     @IBInspectable open var respectLocale: Bool = true {
         didSet {
             configrueView()
