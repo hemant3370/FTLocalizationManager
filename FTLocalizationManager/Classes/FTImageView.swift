@@ -8,21 +8,21 @@
 
 import UIKit
 
-
 open class FTImageView: UIImageView {
+    
     @IBInspectable open var respectLocale: Bool = true {
         didSet {
             configureView()
         }
     }
     
-    @IBInspectable open var imageName: String? {
+    @IBInspectable open var localizedImage: UIImage? {
         didSet {
             configureView()
         }
     }
     
-   open override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         
         configureView()
@@ -32,13 +32,12 @@ open class FTImageView: UIImageView {
         return respectLocale && Language.current.isRTL
     }
     
-   private func configureView() {
+    private func configureView() {
         
         // abort if we dont have an image
-        guard let imageName = imageName, let newImage = UIImage(named: imageName), let cgImage = newImage.cgImage else { return }
+        guard let localizedImage = localizedImage, let cgImage = localizedImage.cgImage else { return }
         
         // set image
-        image = shouldFlip ? UIImage(cgImage: cgImage, scale: newImage.scale, orientation: .upMirrored) : newImage
+        image = shouldFlip ? UIImage(cgImage: cgImage, scale: localizedImage.scale, orientation: .upMirrored) : localizedImage
     }
 }
-

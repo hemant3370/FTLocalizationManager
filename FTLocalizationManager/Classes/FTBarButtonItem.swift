@@ -9,13 +9,14 @@
 import UIKit
 
 open class FTBarButtonItem: UIBarButtonItem {
+    
     @IBInspectable open var respectLocale: Bool = true {
         didSet {
             configrueView()
         }
     }
     
-    @IBInspectable open var imageName: String? {
+    @IBInspectable open var localizedImage: UIImage? {
         didSet {
             configrueView()
         }
@@ -37,15 +38,14 @@ open class FTBarButtonItem: UIBarButtonItem {
         configrueView()
     }
     
-    
     private func configrueView() {
         if let localizedText = localizedText {
             title = NSLocalizedString(localizedText, comment: "")
         }
         
         // abort if we dont have an image
-        guard let imageName = imageName, let newImage = UIImage(named: imageName), let cgImage = newImage.cgImage else { return }
-        let image = shouldFlip ? UIImage(cgImage: cgImage, scale: newImage.scale, orientation: .upMirrored) : newImage
+        guard let localizedImage = localizedImage, let cgImage = localizedImage.cgImage else { return }
+        let image = shouldFlip ? UIImage(cgImage: cgImage, scale: localizedImage.scale, orientation: .upMirrored) : localizedImage
         
         // set image
         self.image = image
