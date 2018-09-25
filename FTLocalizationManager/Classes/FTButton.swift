@@ -43,7 +43,12 @@ open class FTButton: UIButton {
         }
     }
     
-   open override func awakeFromNib() {
+    /// Setting true will use the custom fonts specified
+    @IBInspectable var useCustomFont: Bool = true
+    @IBInspectable var rtlFontName: String = "LandRoverWeb-Medium"
+    @IBInspectable var ltrFontName: String = "LandRoverWeb-Medium"
+    
+    open override func awakeFromNib() {
         super.awakeFromNib()
         
         configrueView()
@@ -53,7 +58,7 @@ open class FTButton: UIButton {
         return respectLocale && Language.current.isRTL
     }
     
-   private func configrueView() {
+    private func configrueView() {
         
         if let localizedTitleNormal = localizedTitleNormal {
             setTitle(NSLocalizedString(localizedTitleNormal, comment: ""), for: .normal)
@@ -66,6 +71,20 @@ open class FTButton: UIButton {
         }
         if let localizedTitleDisabled = localizedTitleDisabled {
             setTitle(NSLocalizedString(localizedTitleDisabled, comment: ""), for: .disabled)
+        }
+        
+        if useCustomFont {
+            
+            // get the custom font
+            var customFont: UIFont?
+            if Language.current.isRTL {
+                customFont = UIFont(name: rtlFontName, size: titleLabel?.font?.pointSize ?? 5)
+            } else {
+                customFont = UIFont(name: ltrFontName, size: titleLabel?.font?.pointSize ?? 5)
+            }
+            
+            // set font
+            self.titleLabel?.font = customFont
         }
         
         // abort if we dont have an image
