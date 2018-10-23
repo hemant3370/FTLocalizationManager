@@ -80,7 +80,7 @@ open class FTButton: UIButton {
         setImage(selectedImage, for: .selected)
     }
     
-    open override func setImage(_ image: UIImage?, for state: UIControlState) {
+    open override func setImage(_ image: UIImage?, for state: UIControl.State) {
         
         guard let newImage = image, let cgImage = image?.cgImage else {
             super.setImage(image, for: state)
