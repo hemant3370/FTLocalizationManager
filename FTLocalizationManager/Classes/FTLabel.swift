@@ -38,7 +38,7 @@ open class FTLabel: UILabel {
         }
     }
     
-   private func configrueView() {
+    open func configrueView() {
         if let localizedText = localizedText {
             text = NSLocalizedString(localizedText, comment: "")
         }
