@@ -30,7 +30,7 @@ open class FTLabel: UILabel {
         configrueView()
         
         // flip
-        if Language.current.isRTL && respectLocale  {
+        if Language.current.isRTL && respectLocale {
             if textAlignment == .right {
                 textAlignment = .left
             }
