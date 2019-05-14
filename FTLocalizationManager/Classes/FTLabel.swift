@@ -10,6 +10,8 @@ import UIKit
 
 open class FTLabel: UILabel {
     
+    @IBInspectable var upperCased: Bool = false
+    
     @IBInspectable open var respectLocale: Bool = true {
         didSet {
             configrueView()
@@ -40,8 +42,7 @@ open class FTLabel: UILabel {
     
     open func configrueView() {
         if let localizedText = localizedText {
-            text = NSLocalizedString(localizedText, comment: "")
+            text = upperCased ? NSLocalizedString(localizedText, comment: "").uppercased() : NSLocalizedString(localizedText, comment: "")
         }
     }
 }
-
