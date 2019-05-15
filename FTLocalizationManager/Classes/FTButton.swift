@@ -10,6 +10,8 @@ import UIKit
 
 open class FTButton: UIButton {
     
+    @IBInspectable var uppercased: Bool = false
+    
     @IBInspectable open var respectLocale: Bool = true {
         didSet {
             configrueView()
@@ -64,16 +66,16 @@ open class FTButton: UIButton {
     private func configrueView() {
         
         if let localizedTitleNormal = localizedTitleNormal {
-            setTitle(NSLocalizedString(localizedTitleNormal, comment: ""), for: .normal)
+            uppercased ? setTitle(NSLocalizedString(localizedTitleNormal, comment: "").uppercased(), for: .normal) : setTitle(NSLocalizedString(localizedTitleNormal, comment: ""), for: .normal)
         }
         if let localizedTitleSelected = localizedTitleSelected {
-            setTitle(NSLocalizedString(localizedTitleSelected, comment: ""), for: .selected)
+            uppercased ? setTitle(NSLocalizedString(localizedTitleSelected, comment: "").uppercased(), for: .selected) : setTitle(NSLocalizedString(localizedTitleSelected, comment: ""), for: .selected)
         }
         if let localizedTitleHighlighted = localizedTitleHighlighted {
-            setTitle(NSLocalizedString(localizedTitleHighlighted, comment: ""), for: .highlighted)
+            uppercased ? setTitle(NSLocalizedString(localizedTitleHighlighted, comment: "").uppercased(), for: .highlighted) : setTitle(NSLocalizedString(localizedTitleHighlighted, comment: ""), for: .highlighted)
         }
         if let localizedTitleDisabled = localizedTitleDisabled {
-            setTitle(NSLocalizedString(localizedTitleDisabled, comment: ""), for: .disabled)
+            uppercased ? setTitle(NSLocalizedString(localizedTitleDisabled, comment: "").uppercased(), for: .disabled) : setTitle(NSLocalizedString(localizedTitleDisabled, comment: ""), for: .disabled)
         }
         
         setImage(normalImage, for: .normal)
