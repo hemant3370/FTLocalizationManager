@@ -10,7 +10,7 @@ import UIKit
 
 open class FTButton: UIButton {
     
-    @IBInspectable var uppercased: Bool = false
+    @IBInspectable open var uppercased: Bool = false
     
     @IBInspectable open var respectLocale: Bool = true {
         didSet {

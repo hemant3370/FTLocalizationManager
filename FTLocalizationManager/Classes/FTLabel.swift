@@ -10,7 +10,7 @@ import UIKit
 
 open class FTLabel: UILabel {
     
-    @IBInspectable var upperCased: Bool = false
+    @IBInspectable open var upperCased: Bool = false
     
     @IBInspectable open var respectLocale: Bool = true {
         didSet {

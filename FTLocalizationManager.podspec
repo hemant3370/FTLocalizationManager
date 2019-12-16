@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'FTLocalizationManager'
-  s.version          = '1.2.5'
+  s.version          = '1.2.6'
   s.summary          = 'Localization Manager with RTL support'
 
 
