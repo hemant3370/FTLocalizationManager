@@ -63,7 +63,7 @@ open class FTButton: UIButton {
         return respectLocale && Language.current.isRTL
     }
     
-    private func configrueView() {
+    open func configureView() {
         
         if let localizedTitleNormal = localizedTitleNormal {
             uppercased ? setTitle(NSLocalizedString(localizedTitleNormal, comment: "").uppercased(), for: .normal) : setTitle(NSLocalizedString(localizedTitleNormal, comment: ""), for: .normal)
