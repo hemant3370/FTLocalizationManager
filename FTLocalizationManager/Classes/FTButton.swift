@@ -53,6 +53,12 @@ open class FTButton: UIButton {
         }
     }
     
+    @IBInspectable open var alwaysTemplate: Bool = false {
+        didSet {
+            configureView()
+        }
+    }
+    
     open override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -89,7 +95,9 @@ open class FTButton: UIButton {
             return
         }
         
-        let image = shouldFlip ? UIImage(cgImage: cgImage, scale: newImage.scale, orientation: .upMirrored) : newImage
+        image?.renderingMode
+        
+        let image = shouldFlip ? UIImage(cgImage: cgImage, scale: newImage.scale, orientation: .upMirrored).withRenderingMode(alwaysTemplate ? .alwaysTemplate: .automatic) : newImage
         
         // set image
         super.setImage(image, for: state)
