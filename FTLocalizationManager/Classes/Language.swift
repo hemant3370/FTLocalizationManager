@@ -12,9 +12,6 @@ public enum Language: String {
     
     case english = "en"
     case arabic = "ar"
-    case french = "fr"
-    case hindi = "hi"
-    case russian = "ru"
     
     public var locale: String {
         return rawValue
@@ -24,9 +21,6 @@ public enum Language: String {
         switch self {
         case .english: return "English"
         case .arabic: return "Arabic"
-        case .french: return "French"
-        case .russian: return "Russian"
-        case .hindi: return "Hindi"
         }
     }
     
@@ -34,9 +28,6 @@ public enum Language: String {
         switch self {
         case .english: return "English"
         case .arabic: return "العربية"
-        case .french: return "Français"
-        case .russian: return "русский"
-        case .hindi: return "हिंदी"
         }
     }
     
@@ -57,7 +48,7 @@ public enum Language: String {
     }
     
     public static var all: [Language] {
-        return [.arabic, english, .french, .russian, .hindi]
+        return [.arabic, english]
     }
 }
 
@@ -97,7 +88,10 @@ public extension Language {
         UserDefaults.standard.synchronize()
         
         // update app for new language
-        language.updateView(restarting: rootViewControllerGenerator)
+        if #available(iOS 13.0, *) { }
+        else {
+            language.updateView(restarting: rootViewControllerGenerator)
+        }
     }
     
     /// returns the device language. returns arabic if device language is arabic, else returns english
@@ -130,7 +124,12 @@ public extension Language {
     }
     
     static func apply() {
-        Language.current = Language.current
-        UIApplication.handleLocalization()
+        if #available(iOS 13.0, *) {
+            Language.current = Language.device
+        }
+        else {
+            Language.current = Language.current
+            UIApplication.handleLocalization()
+        }
     }
 }
