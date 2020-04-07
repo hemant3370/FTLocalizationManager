@@ -1,5 +1,5 @@
 //
-//  FTImageView.swift
+//  UIImageViewExtensions.swift
 //  LocalizationHandler
 //
 //  Created by Abdulla Kunhi on 4/25/18.
@@ -8,19 +8,16 @@
 
 import UIKit
 
-open class FTImageView: UIImageView {
-    
-    @IBInspectable open var respectLocale: Bool = true {
-        didSet {
-            configureView()
-        }
-    }
+extension UIImageView {
     
     @IBInspectable open var localizedImage: UIImage? {
-        didSet {
+        get { return valueFor(key: &localizedImageKey) }
+        set {
+            setValue(value: newValue, key: &localizedImageKey)
             configureView()
         }
     }
+    
     
     open override func awakeFromNib() {
         super.awakeFromNib()

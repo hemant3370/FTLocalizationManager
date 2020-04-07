@@ -1,5 +1,5 @@
 //
-//  FTTextField.swift
+//  UITextFieldExtensions.swift
 //  LocalizationHandler
 //
 //  Created by Abdulla Kunhi on 4/26/18.
@@ -8,30 +8,27 @@
 
 import UIKit
 
-open class FTTextField: UITextField {
-    
-    @IBInspectable open var respectLocale: Bool = true {
-        didSet {
-          configrueView()
-        }
-    }
-    
+extension UITextField {
     @IBInspectable open var localizedText: String? {
-        didSet {
-            configrueView()
+        get { return valueFor(key: &localizedTextKey) }
+        set {
+            setValue(value: newValue, key: &localizedTextKey)
+            setLocalizedText()
         }
     }
     
     @IBInspectable open var localizedPlaceholder: String? {
-        didSet {
-            configrueView()
+        get { return valueFor(key: &localizedTextKey) }
+        set {
+            setValue(value: newValue, key: &localizedTextKey)
+            setLocalizedText()
         }
     }
     
     open override func awakeFromNib() {
         super.awakeFromNib()
         
-        configrueView()
+        setLocalizedText()
         
         // flip
         if Language.current.isRTL && respectLocale  {
@@ -44,7 +41,7 @@ open class FTTextField: UITextField {
         }
     }
     
-    private func configrueView() {
+    private func setLocalizedText() {
         if let localizedText = localizedText {
             text = NSLocalizedString(localizedText, comment: "")
         }
@@ -54,4 +51,5 @@ open class FTTextField: UITextField {
         }
     }
 }
+
 

@@ -1,5 +1,5 @@
 //
-//  FTNavigationItem.swift
+//  UINavigationItemExtensions.swift
 //  LocalizationHandler
 //
 //  Created by Abdulla Kunhi on 4/26/18.
@@ -8,21 +8,22 @@
 
 import UIKit
 
-open class FTNavigationItem: UINavigationItem {
-
+extension UINavigationItem {
     @IBInspectable open var localizedText: String? {
-        didSet {
-            configrueView()
+        get { return valueFor(key: &localizedTextKey) }
+        set {
+            setValue(value: newValue, key: &localizedTextKey)
+            setLocalizedText()
         }
     }
     
-  open override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         
-        configrueView()
+        setLocalizedText()
     }
     
-   private func configrueView() {
+    private func setLocalizedText() {
         if let localizedText = localizedText {
             title = NSLocalizedString(localizedText, comment: "")
         }

@@ -1,5 +1,5 @@
 //
-//  FTBarButtonItem.swift
+//  UIBarButtonItemExtension.swift
 //  LocalizationHandler
 //
 //  Created by Abdulla Kunhi on 4/26/18.
@@ -8,23 +8,26 @@
 
 import UIKit
 
-open class FTBarButtonItem: UIBarButtonItem {
+extension UIBarButtonItem {
     
-    @IBInspectable open var respectLocale: Bool = true {
-        didSet {
-            configrueView()
+    @IBInspectable open var respectLocale: Bool {
+        get { return autoLocalizeValue() }
+        set { setAutoLocalizeValue(value: newValue) }
+    }
+    
+    @IBInspectable open var localizedText: String? {
+        get { return valueFor(key: &localizedTextKey) }
+        set {
+            setValue(value: newValue, key: &localizedTextKey)
+            configureView()
         }
     }
     
     @IBInspectable open var localizedImage: UIImage? {
-        didSet {
-            configrueView()
-        }
-    }
-    
-    @IBInspectable open var localizedText: String? {
-        didSet {
-            configrueView()
+        get { return valueFor(key: &localizedImageKey) }
+        set {
+            setValue(value: newValue, key: &localizedImageKey)
+            configureView()
         }
     }
     
@@ -35,10 +38,10 @@ open class FTBarButtonItem: UIBarButtonItem {
     open override func awakeFromNib() {
         super.awakeFromNib()
         
-        configrueView()
+        configureView()
     }
     
-    private func configrueView() {
+    private func configureView() {
         if let localizedText = localizedText {
             title = NSLocalizedString(localizedText, comment: "")
         }
