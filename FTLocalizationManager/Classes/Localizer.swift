@@ -22,8 +22,7 @@ public extension Bundle {
         var bundle: Bundle?
         if let _path = path(forResource: Language.current.locale, ofType: "lproj") {
             bundle = Bundle(path: _path)
-        } else {
-            let _path = path(forResource: "Base", ofType: "lproj")!
+        } else if let _path = path(forResource: "Base", ofType: "lproj") {
             bundle = Bundle(path: _path)
         }
         
