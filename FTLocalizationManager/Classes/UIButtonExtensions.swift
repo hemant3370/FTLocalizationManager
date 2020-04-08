@@ -91,16 +91,16 @@ extension UIButton {
     private func configureView() {
         
         if let localizedTitleNormal = localizedTitleNormal {
-            upperCased ? setTitle(NSLocalizedString(localizedTitleNormal, comment: "").uppercased(), for: .normal) : setTitle(NSLocalizedString(localizedTitleNormal, comment: ""), for: .normal)
+            upperCased ? setTitle((&&localizedTitleNormal).uppercased(), for: .normal) : setTitle(&&localizedTitleNormal, for: .normal)
         }
         if let localizedTitleSelected = localizedTitleSelected {
-            upperCased ? setTitle(NSLocalizedString(localizedTitleSelected, comment: "").uppercased(), for: .selected) : setTitle(NSLocalizedString(localizedTitleSelected, comment: ""), for: .selected)
+            upperCased ? setTitle((&&localizedTitleSelected).uppercased(), for: .selected) : setTitle(&&localizedTitleSelected, for: .selected)
         }
         if let localizedTitleHighlighted = localizedTitleHighlighted {
-            upperCased ? setTitle(NSLocalizedString(localizedTitleHighlighted, comment: "").uppercased(), for: .highlighted) : setTitle(NSLocalizedString(localizedTitleHighlighted, comment: ""), for: .highlighted)
+            upperCased ? setTitle((&&localizedTitleHighlighted).uppercased(), for: .highlighted) : setTitle(&&localizedTitleHighlighted, for: .highlighted)
         }
         if let localizedTitleDisabled = localizedTitleDisabled {
-            upperCased ? setTitle(NSLocalizedString(localizedTitleDisabled, comment: "").uppercased(), for: .disabled) : setTitle(NSLocalizedString(localizedTitleDisabled, comment: ""), for: .disabled)
+            upperCased ? setTitle((&&localizedTitleDisabled).uppercased(), for: .disabled) : setTitle(&&localizedTitleDisabled, for: .disabled)
         }
         
         setimage(normalImage, for: .normal)

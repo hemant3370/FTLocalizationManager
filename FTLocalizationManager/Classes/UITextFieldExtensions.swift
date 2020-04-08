@@ -43,11 +43,11 @@ extension UITextField {
     
     private func setLocalizedText() {
         if let localizedText = localizedText {
-            text = NSLocalizedString(localizedText, comment: "")
+            text = &&localizedText
         }
         
         if let localizedPlaceholder = localizedPlaceholder {
-            placeholder = NSLocalizedString(localizedPlaceholder, comment: "")
+            placeholder = &&localizedPlaceholder
         }
     }
 }

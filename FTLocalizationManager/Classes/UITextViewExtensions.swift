@@ -43,7 +43,7 @@ extension UITextView {
     
     private func setLocalizedText() {
         if let localizedText = localizedText {
-            text = NSLocalizedString(localizedText, comment: "")
+            text = &&localizedText
         }
     }
 }

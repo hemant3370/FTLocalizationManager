@@ -8,10 +8,17 @@
 
 import UIKit
 
+public protocol RuntimeLocalizer {
+    var bundle: Bundle { get }
+}
+
 public enum Language: String {
     
     case english = "en"
     case arabic = "ar"
+    case french = "fr"
+    case hindi = "hi"
+    case russian = "ru"
     
     public var locale: String {
         return rawValue
@@ -21,6 +28,9 @@ public enum Language: String {
         switch self {
         case .english: return "English"
         case .arabic: return "Arabic"
+        case .french: return "French"
+        case .russian: return "Russian"
+        case .hindi: return "Hindi"
         }
     }
     
@@ -28,6 +38,9 @@ public enum Language: String {
         switch self {
         case .english: return "English"
         case .arabic: return "العربية"
+        case .french: return "Français"
+        case .russian: return "русский"
+        case .hindi: return "हिंदी"
         }
     }
     
@@ -47,8 +60,11 @@ public enum Language: String {
         return Language(rawValue: code) ?? .english
     }
     
-    public static var all: [Language] {
-        return [.arabic, english]
+    private static var all: [Language] {
+        return Locale.preferredLanguages.compactMap {
+            guard let key = $0.components(separatedBy: "-").first else { return nil }
+            return Language(rawValue: key)
+        }
     }
 }
 
@@ -96,10 +112,9 @@ public extension Language {
     
     /// returns the device language. returns arabic if device language is arabic, else returns english
     static var device: Language {
-        guard let deviceLanguages = UserDefaults.standard.object(forKey: Keys.device) as? [String],
-            let deviceLanguage = deviceLanguages.first else { return .english }
-        let array = deviceLanguage.components(separatedBy: "-")
-        return Language(rawValue: array.first ?? "en") ?? .english
+        let array = Locale.current.identifier.components(separatedBy: "-")
+        let language = Language(rawValue: array.first ?? "en") ?? .english
+        return Language.all.contains(language) ? language : english
     }
 }
 

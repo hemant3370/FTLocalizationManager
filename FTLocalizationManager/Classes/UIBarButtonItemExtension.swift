@@ -43,7 +43,7 @@ extension UIBarButtonItem {
     
     private func configureView() {
         if let localizedText = localizedText {
-            title = NSLocalizedString(localizedText, comment: "")
+            title = &&localizedText
         }
         
         // abort if we dont have an image

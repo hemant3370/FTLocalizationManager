@@ -25,7 +25,7 @@ extension UIViewController {
     
     private func setLocalizedText() {
         if let localizedText = localizedText {
-            title = NSLocalizedString(localizedText, comment: "")
+            title = &&localizedText
         }
     }
 }

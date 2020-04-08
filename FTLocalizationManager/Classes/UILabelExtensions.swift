@@ -61,7 +61,7 @@ extension UILabel {
 extension UILabel {
     open func setLocalizedText() {
         if let localizedText = localizedText {
-            text = upperCased ? NSLocalizedString(localizedText, comment: "").uppercased() : NSLocalizedString(localizedText, comment: "")
+            text = upperCased ? (&&localizedText).uppercased() : &&localizedText
         }
     }
     

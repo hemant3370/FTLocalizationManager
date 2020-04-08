@@ -9,15 +9,16 @@
 /* Begin PBXBuildFile section */
 		308ECB1302D782835E9553F771084FB9 /* FTLocalizationManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A1AF339ED92017AE6A27D8C9798B0D /* FTLocalizationManager-dummy.m */; };
 		5935476F40398EA487824711722C1C59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		7D19C5B4243DC50F0059BA0C /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D19C5AC243DC50F0059BA0C /* UIBarButtonItemExtension.swift */; };
+		7D19C5B5243DC50F0059BA0C /* UITextViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D19C5AD243DC50F0059BA0C /* UITextViewExtensions.swift */; };
+		7D19C5B6243DC50F0059BA0C /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D19C5AE243DC50F0059BA0C /* UITextFieldExtensions.swift */; };
+		7D19C5B7243DC50F0059BA0C /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D19C5AF243DC50F0059BA0C /* UIViewControllerExtensions.swift */; };
+		7D19C5B8243DC50F0059BA0C /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D19C5B0243DC50F0059BA0C /* UILabelExtensions.swift */; };
+		7D19C5B9243DC50F0059BA0C /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D19C5B1243DC50F0059BA0C /* UIImageViewExtensions.swift */; };
+		7D19C5BA243DC50F0059BA0C /* UINavigationItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D19C5B2243DC50F0059BA0C /* UINavigationItemExtensions.swift */; };
+		7D19C5BB243DC50F0059BA0C /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D19C5B3243DC50F0059BA0C /* UIButtonExtensions.swift */; };
+		7D19C5BD243DC51B0059BA0C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D19C5BC243DC51B0059BA0C /* Utils.swift */; };
 		7FE8C06ACCCF8C531149EBACD38F908F /* Pods-FTLocalizationManager_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2374DA42DF2FC6EF240764EACC6849E5 /* Pods-FTLocalizationManager_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8043556A2092204D00A3290B /* FTBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804355602092204C00A3290B /* FTBarButtonItem.swift */; };
-		8043556B2092204D00A3290B /* FTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804355612092204C00A3290B /* FTButton.swift */; };
-		8043556C2092204D00A3290B /* FTImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804355622092204C00A3290B /* FTImageView.swift */; };
-		8043556D2092204D00A3290B /* FTLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804355632092204C00A3290B /* FTLabel.swift */; };
-		8043556E2092204D00A3290B /* FTNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804355642092204C00A3290B /* FTNavigationItem.swift */; };
-		8043556F2092204D00A3290B /* FTTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804355652092204C00A3290B /* FTTextField.swift */; };
-		804355702092204D00A3290B /* FTTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804355662092204C00A3290B /* FTTextView.swift */; };
-		804355712092204D00A3290B /* FTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804355672092204C00A3290B /* FTViewController.swift */; };
 		804355722092204D00A3290B /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804355682092204C00A3290B /* Language.swift */; };
 		804355732092204D00A3290B /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804355692092204C00A3290B /* Localizer.swift */; };
 		87F1299D6C5C73F1BF146D92E6F8D0DF /* Pods-FTLocalizationManager_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6A11EB0A92E7AE30DCBB776C5004FF /* Pods-FTLocalizationManager_Tests-dummy.m */; };
@@ -43,14 +44,15 @@
 		50A1AF339ED92017AE6A27D8C9798B0D /* FTLocalizationManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FTLocalizationManager-dummy.m"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		6E47B3F0C86007EEDA0D4BBB75EDD2C0 /* Pods-FTLocalizationManager_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FTLocalizationManager_Tests-resources.sh"; sourceTree = "<group>"; };
-		804355602092204C00A3290B /* FTBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTBarButtonItem.swift; sourceTree = "<group>"; };
-		804355612092204C00A3290B /* FTButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTButton.swift; sourceTree = "<group>"; };
-		804355622092204C00A3290B /* FTImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTImageView.swift; sourceTree = "<group>"; };
-		804355632092204C00A3290B /* FTLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTLabel.swift; sourceTree = "<group>"; };
-		804355642092204C00A3290B /* FTNavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTNavigationItem.swift; sourceTree = "<group>"; };
-		804355652092204C00A3290B /* FTTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTTextField.swift; sourceTree = "<group>"; };
-		804355662092204C00A3290B /* FTTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTTextView.swift; sourceTree = "<group>"; };
-		804355672092204C00A3290B /* FTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTViewController.swift; sourceTree = "<group>"; };
+		7D19C5AC243DC50F0059BA0C /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
+		7D19C5AD243DC50F0059BA0C /* UITextViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewExtensions.swift; sourceTree = "<group>"; };
+		7D19C5AE243DC50F0059BA0C /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
+		7D19C5AF243DC50F0059BA0C /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		7D19C5B0243DC50F0059BA0C /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
+		7D19C5B1243DC50F0059BA0C /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
+		7D19C5B2243DC50F0059BA0C /* UINavigationItemExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationItemExtensions.swift; sourceTree = "<group>"; };
+		7D19C5B3243DC50F0059BA0C /* UIButtonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
+		7D19C5BC243DC51B0059BA0C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		804355682092204C00A3290B /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		804355692092204C00A3290B /* Localizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -137,16 +139,17 @@
 		8043555E2092204C00A3290B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				804355602092204C00A3290B /* FTBarButtonItem.swift */,
-				804355612092204C00A3290B /* FTButton.swift */,
-				804355622092204C00A3290B /* FTImageView.swift */,
-				804355632092204C00A3290B /* FTLabel.swift */,
-				804355642092204C00A3290B /* FTNavigationItem.swift */,
-				804355652092204C00A3290B /* FTTextField.swift */,
-				804355662092204C00A3290B /* FTTextView.swift */,
-				804355672092204C00A3290B /* FTViewController.swift */,
+				7D19C5AC243DC50F0059BA0C /* UIBarButtonItemExtension.swift */,
+				7D19C5B3243DC50F0059BA0C /* UIButtonExtensions.swift */,
+				7D19C5B1243DC50F0059BA0C /* UIImageViewExtensions.swift */,
+				7D19C5B0243DC50F0059BA0C /* UILabelExtensions.swift */,
+				7D19C5B2243DC50F0059BA0C /* UINavigationItemExtensions.swift */,
+				7D19C5AE243DC50F0059BA0C /* UITextFieldExtensions.swift */,
+				7D19C5AD243DC50F0059BA0C /* UITextViewExtensions.swift */,
+				7D19C5AF243DC50F0059BA0C /* UIViewControllerExtensions.swift */,
 				804355682092204C00A3290B /* Language.swift */,
 				804355692092204C00A3290B /* Localizer.swift */,
+				7D19C5BC243DC51B0059BA0C /* Utils.swift */,
 			);
 			name = Classes;
 			path = FTLocalizationManager/Classes;
@@ -285,6 +288,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
@@ -311,17 +315,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8043556F2092204D00A3290B /* FTTextField.swift in Sources */,
+				7D19C5B8243DC50F0059BA0C /* UILabelExtensions.swift in Sources */,
+				7D19C5B4243DC50F0059BA0C /* UIBarButtonItemExtension.swift in Sources */,
 				804355722092204D00A3290B /* Language.swift in Sources */,
 				804355732092204D00A3290B /* Localizer.swift in Sources */,
-				8043556E2092204D00A3290B /* FTNavigationItem.swift in Sources */,
-				8043556C2092204D00A3290B /* FTImageView.swift in Sources */,
-				8043556D2092204D00A3290B /* FTLabel.swift in Sources */,
-				8043556A2092204D00A3290B /* FTBarButtonItem.swift in Sources */,
-				804355702092204D00A3290B /* FTTextView.swift in Sources */,
-				8043556B2092204D00A3290B /* FTButton.swift in Sources */,
-				804355712092204D00A3290B /* FTViewController.swift in Sources */,
+				7D19C5B9243DC50F0059BA0C /* UIImageViewExtensions.swift in Sources */,
+				7D19C5B6243DC50F0059BA0C /* UITextFieldExtensions.swift in Sources */,
+				7D19C5BB243DC50F0059BA0C /* UIButtonExtensions.swift in Sources */,
+				7D19C5BA243DC50F0059BA0C /* UINavigationItemExtensions.swift in Sources */,
 				308ECB1302D782835E9553F771084FB9 /* FTLocalizationManager-dummy.m in Sources */,
+				7D19C5B5243DC50F0059BA0C /* UITextViewExtensions.swift in Sources */,
+				7D19C5B7243DC50F0059BA0C /* UIViewControllerExtensions.swift in Sources */,
+				7D19C5BD243DC51B0059BA0C /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

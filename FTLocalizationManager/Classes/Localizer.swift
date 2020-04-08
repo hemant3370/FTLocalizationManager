@@ -19,24 +19,19 @@ public extension UIApplication {
 public extension Bundle {
     
     @objc func specialLocalizedStringForKey(_ key: String, value: String?, table tableName: String?) -> String {
-        if self == Bundle.main {
-            var bundle: Bundle?
-            if let _path = Bundle.main.path(forResource: Language.current.locale, ofType: "lproj") {
-                bundle = Bundle(path: _path)
-            } else {
-                let _path = Bundle.main.path(forResource: "Base", ofType: "lproj")!
-                bundle = Bundle(path: _path)
-            }
-            
-            guard let newBundle = bundle  else {
-                return (self.specialLocalizedStringForKey(key, value: value, table: tableName))
-            }
-            
-            return (newBundle.specialLocalizedStringForKey(key, value: value, table: tableName))
-            
+        var bundle: Bundle?
+        if let _path = path(forResource: Language.current.locale, ofType: "lproj") {
+            bundle = Bundle(path: _path)
         } else {
+            let _path = path(forResource: "Base", ofType: "lproj")!
+            bundle = Bundle(path: _path)
+        }
+        
+        guard let newBundle = bundle  else {
             return (self.specialLocalizedStringForKey(key, value: value, table: tableName))
         }
+        
+        return (newBundle.specialLocalizedStringForKey(key, value: value, table: tableName))
     }
 }
 
