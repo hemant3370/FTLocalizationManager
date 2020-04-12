@@ -94,9 +94,7 @@ open class FTButton: UIButton {
             super.setImage(image, for: state)
             return
         }
-        
-        image?.renderingMode
-        
+                
         let image = shouldFlip ? UIImage(cgImage: cgImage, scale: newImage.scale, orientation: .upMirrored).withRenderingMode(alwaysTemplate ? .alwaysTemplate: .automatic) : newImage
         
         // set image

@@ -28,25 +28,46 @@ open class FTTextView: UITextView {
         }
     }
     
+    public init(frame: CGRect, textContainer: NSTextContainer? = nil, textAlignment: NSTextAlignment) {
+        super.init(frame: frame, textContainer: textContainer)
+        self.textAlignment = textAlignment
+        
+        setTextAlignment()
+    }
+    
+    public override init(frame: CGRect, textContainer: NSTextContainer? = nil) {
+        fatalError("should call init(frame: CGRect, textContainer: NSTextContainer? = nil, textAlignment: NSTextAlignment)")
+    }
+    
+    required public init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     open override func awakeFromNib() {
         super.awakeFromNib()
         
         configrueView()
         
         // flip
-        if Language.current.isRTL && respectLocale  {
+        setTextAlignment()
+    }
+}
+
+private extension FTTextView {
+    func configrueView() {
+        if let localizedText = localizedText {
+            text = NSLocalizedString(localizedText, comment: "")
+        }
+    }
+    
+    func setTextAlignment() {
+        if Language.current.isRTL && respectLocale {
             if textAlignment == .right {
                 textAlignment = .left
             }
             else if textAlignment == .left {
                 textAlignment = .right
             }
-        }
-    }
-    
-    private func configrueView() {
-        if let localizedText = localizedText {
-            text = NSLocalizedString(localizedText, comment: "")
         }
     }
 }
