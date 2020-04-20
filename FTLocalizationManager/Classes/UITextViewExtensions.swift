@@ -24,10 +24,8 @@ extension UITextView {
             setLocalizedText()
         }
     }
-    
-    open override func awakeFromNib() {
-        super.awakeFromNib()
         
+    public func localize() {
         setLocalizedText()
         
         // flip

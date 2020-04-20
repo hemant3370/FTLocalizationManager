@@ -17,12 +17,6 @@ extension UIViewController {
         }
     }
     
-    open override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        setLocalizedText()
-    }
-    
     private func setLocalizedText() {
         if let localizedText = localizedText {
             title = &&localizedText

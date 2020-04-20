@@ -19,7 +19,7 @@ extension UIBarButtonItem {
         get { return valueFor(key: &localizedTextKey) }
         set {
             setValue(value: newValue, key: &localizedTextKey)
-            configureView()
+            localize()
         }
     }
     
@@ -27,7 +27,7 @@ extension UIBarButtonItem {
         get { return valueFor(key: &localizedImageKey) }
         set {
             setValue(value: newValue, key: &localizedImageKey)
-            configureView()
+            localize()
         }
     }
     
@@ -35,13 +35,7 @@ extension UIBarButtonItem {
         return respectLocale && Language.current.isRTL
     }
     
-    open override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        configureView()
-    }
-    
-    private func configureView() {
+    public func localize() {
         if let localizedText = localizedText {
             title = &&localizedText
         }

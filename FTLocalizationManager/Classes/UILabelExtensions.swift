@@ -59,14 +59,13 @@ extension UILabel {
 }
 
 extension UILabel {
-    open func setLocalizedText() {
+    private func setLocalizedText() {
         if let localizedText = localizedText {
             text = upperCased ? (&&localizedText).uppercased() : &&localizedText
         }
     }
     
-    open override func awakeFromNib() {
-        super.awakeFromNib()
+    public func localize() {
         
         if Language.current.isRTL && respectLocale {
             if textAlignment == .right {

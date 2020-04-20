@@ -14,22 +14,15 @@ extension UIImageView {
         get { return valueFor(key: &localizedImageKey) }
         set {
             setValue(value: newValue, key: &localizedImageKey)
-            configureView()
+            localize()
         }
-    }
-    
-    
-    open override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        configureView()
     }
     
     fileprivate var shouldFlip: Bool {
         return respectLocale && Language.current.isRTL
     }
     
-    private func configureView() {
+    public func localize() {
         
         // abort if we dont have an image
         guard let localizedImage = localizedImage, let cgImage = localizedImage.cgImage else { return }

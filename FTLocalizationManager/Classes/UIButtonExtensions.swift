@@ -20,7 +20,7 @@ extension UIButton {
         get { return valueFor(key: &localizedTextKey) }
         set {
             setValue(value: newValue, key: &localizedTextKey)
-            configureView()
+            localize()
         }
     }
     
@@ -28,7 +28,7 @@ extension UIButton {
         get { return valueFor(key: &localizedSelectedTitleKey) }
         set {
             setValue(value: newValue, key: &localizedSelectedTitleKey)
-            configureView()
+            localize()
         }
     }
     
@@ -36,7 +36,7 @@ extension UIButton {
         get { return valueFor(key: &localizedHighlightedTitleKey) }
         set {
             setValue(value: newValue, key: &localizedHighlightedTitleKey)
-            configureView()
+            localize()
         }
     }
     
@@ -44,7 +44,7 @@ extension UIButton {
         get { return valueFor(key: &localizedDisabledTitleKey) }
         set {
             setValue(value: newValue, key: &localizedDisabledTitleKey)
-            configureView()
+            localize()
         }
     }
     
@@ -57,7 +57,7 @@ extension UIButton {
         get { return valueFor(key: &localizedImageKey) }
         set {
             setValue(value: newValue, key: &localizedImageKey)
-            configureView()
+            localize()
         }
     }
     
@@ -65,7 +65,7 @@ extension UIButton {
         get { return valueFor(key: &localizedSelectedImageKey) }
         set {
             setValue(value: newValue, key: &localizedSelectedImageKey)
-            configureView()
+            localize()
         }
     }
     
@@ -73,22 +73,15 @@ extension UIButton {
         get { return valueFor(key: &alwaysTemplateKey) ?? false }
         set {
             setValue(value: newValue, key: &alwaysTemplateKey)
-            configureView()
+            localize()
         }
     }
     
     fileprivate var shouldFlip: Bool {
           return respectLocale && Language.current.isRTL
       }
-      
-    
-    open override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        configureView()
-    }
   
-    private func configureView() {
+    public func localize() {
         
         if let localizedTitleNormal = localizedTitleNormal {
             upperCased ? setTitle((&&localizedTitleNormal).uppercased(), for: .normal) : setTitle(&&localizedTitleNormal, for: .normal)

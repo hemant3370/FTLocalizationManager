@@ -25,9 +25,7 @@ extension UITextField {
         }
     }
     
-    open override func awakeFromNib() {
-        super.awakeFromNib()
-        
+    public func localize() {
         setLocalizedText()
         
         // flip
