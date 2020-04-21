@@ -112,7 +112,9 @@ public extension Language {
     
     /// returns the device language. returns arabic if device language is arabic, else returns english
     static var device: Language {
-        let array = Locale.current.identifier.components(separatedBy: "-")
+        guard let deviceLanguages = UserDefaults.standard.object(forKey: Keys.device) as? [String],
+            let deviceLanguage = deviceLanguages.first else { return .english }
+        let array = deviceLanguage.components(separatedBy: "-")
         let language = Language(rawValue: array.first ?? "en") ?? .english
         return Language.all.contains(language) ? language : english
     }
