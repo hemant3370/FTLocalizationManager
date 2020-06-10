@@ -12,6 +12,10 @@ prefix operator &&
 prefix func && (string: String?) -> String {
     guard let string = string else { return "" }
     
-    let bundle = (Language.current as? RuntimeLocalizer)?.bundle ?? Bundle.main
-    return NSLocalizedString(string, tableName: nil, bundle: bundle, comment: "")
+    guard let customBundle = (Language.current as? RuntimeLocalizer)?.bundle else {
+        return NSLocalizedString(string, bundle: Bundle.main, comment: "")
+    }
+    
+    let result = NSLocalizedString(string, bundle: customBundle, comment: "")
+    return result == string ? NSLocalizedString(string, bundle: Bundle.main, comment: "") : result
 }
