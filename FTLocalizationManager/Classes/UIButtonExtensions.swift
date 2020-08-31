@@ -110,6 +110,6 @@ extension UIButton {
         let image = shouldFlip ? UIImage(cgImage: cgImage, scale: newImage.scale, orientation: .upMirrored).withRenderingMode(alwaysTemplate ? .alwaysTemplate: .automatic) : newImage
         
         // set image
-        setimage(image, for: state)
+        setImage(image, for: state)
     }
 }
