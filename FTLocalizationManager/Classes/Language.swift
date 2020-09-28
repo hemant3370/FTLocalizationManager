@@ -12,6 +12,7 @@ public enum Language: String {
     
     case english = "en"
     case arabic = "ar"
+    case french = "fr"
     
     public var locale: String {
         return rawValue
@@ -21,6 +22,7 @@ public enum Language: String {
         switch self {
         case .english: return "English"
         case .arabic: return "Arabic"
+        case .french: return "French"
         }
     }
     
@@ -28,6 +30,7 @@ public enum Language: String {
         switch self {
         case .english: return "English"
         case .arabic: return "العربية"
+        case .french: return "Français"
         }
     }
     
@@ -48,7 +51,7 @@ public enum Language: String {
     }
     
     public static var all: [Language] {
-        return [.arabic, english]
+        return [.arabic, .english, .french]
     }
 }
 
