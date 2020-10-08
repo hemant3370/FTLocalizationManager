@@ -126,6 +126,7 @@ public extension Language {
         // update semanticContentAttribute
         UIView.appearance().semanticContentAttribute = semanticContentAttribute
         UISearchBar.appearance().semanticContentAttribute = semanticContentAttribute
+        UITextField.appearance().semanticContentAttribute = semanticContentAttribute
         
         restart(rootViewControllerGenerator: rootViewControllerGenerator)
     }
