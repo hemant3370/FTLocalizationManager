@@ -8,16 +8,16 @@
 import UIKit
 
 public extension UIView {
-    func forceLeftToRight(shouldWithSuviews: Bool = false) {
+    func forceLeftToRight(shouldWithSubviews: Bool = false) {
         guard Language.current.isRTL else { return }
         
         if #available(iOS 13.0, *) {
             semanticContentAttribute = .forceLeftToRight
         } else {
             flip()
-            if !shouldWithSuviews {
+            if !shouldWithSubviews {
                 subviews.forEach { view in
-                    view.flip()
+                    view.forceLeftToRight()
                 }
             }
         }

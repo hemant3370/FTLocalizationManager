@@ -35,7 +35,7 @@ open class FTTextView: UITextView {
         setTextAlignment()
     }
     
-    public override init(frame: CGRect, textContainer: NSTextContainer? = nil) {
+    private override init(frame: CGRect, textContainer: NSTextContainer? = nil) {
         fatalError("should call init(frame: CGRect, textContainer: NSTextContainer? = nil, textAlignment: NSTextAlignment)")
     }
     

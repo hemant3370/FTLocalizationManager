@@ -83,7 +83,7 @@ public extension Language {
     /// set the current language and restart with the rootviewcontroller
     static func setCurrentLanguage(language: Language, restarting rootViewControllerGenerator: (() -> UIViewController?)? = nil) {
         
-        // save the preffered language
+        // save the preferred language
         UserDefaults.standard.set(language.locale, forKey: Keys.preferred)
         UserDefaults.standard.synchronize()
         

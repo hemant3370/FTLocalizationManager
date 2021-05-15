@@ -30,7 +30,7 @@ open class FTLabel: UILabel {
         setTextAlignment()
     }
     
-    public override init(frame: CGRect) {
+    private override init(frame: CGRect) {
         fatalError("should call init(frame: CGRect, textAlignment: NSTextAlignment)")
     }
         

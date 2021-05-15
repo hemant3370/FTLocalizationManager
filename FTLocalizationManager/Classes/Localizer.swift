@@ -42,13 +42,13 @@ public extension Bundle {
 
 public func MethodSwizzleGivenClassName(cls: AnyClass, originalSelector: Selector, overrideSelector: Selector) {
     
-    guard let origMethod: Method = class_getInstanceMethod(cls, originalSelector), let overrideMethod: Method = class_getInstanceMethod(cls, overrideSelector)  else {
+    guard let originalMethod: Method = class_getInstanceMethod(cls, originalSelector), let overrideMethod: Method = class_getInstanceMethod(cls, overrideSelector)  else {
         return
     }
     if (class_addMethod(cls, originalSelector, method_getImplementation(overrideMethod), method_getTypeEncoding(overrideMethod))) {
-        class_replaceMethod(cls, overrideSelector, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
+        class_replaceMethod(cls, overrideSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
     } else {
-        method_exchangeImplementations(origMethod, overrideMethod);
+        method_exchangeImplementations(originalMethod, overrideMethod);
     }
 }
 
